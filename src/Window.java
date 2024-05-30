@@ -10,6 +10,7 @@ public class Window extends JFrame {
 
     int width = 500, height = 500;
     JButton btn1;
+    JButton btn2;
     JTextField txt1;
 
     public Window() {
@@ -19,13 +20,19 @@ public class Window extends JFrame {
         jpanel.setOpaque(true);
         jpanel.setLayout(null);
 
-        btn1 = new JButton("Push the button");
+        btn1 = new JButton("Push the button!");
         btn1.setLocation(25,25);
         btn1.setSize(150, 70);
         jpanel.add(btn1);
-
         btn1.addActionListener(new  actionPerformer());
         btn1.addMouseListener(new mouseActionPerformer());
+
+        btn2 = new JButton("Don't push this button!");
+        btn2.setLocation(190, 25);
+        btn2.setSize(130, 50);
+        jpanel.add(btn2);
+        btn2.addActionListener(new  actionPerformer());
+        btn2.addMouseListener(new mouseActionPerformer());
 
         setContentPane(jpanel);
     }
@@ -41,6 +48,7 @@ public class Window extends JFrame {
         @Override
         public void mouseClicked(MouseEvent e) {
             btn1.setBackground(null);
+            btn2.setBackground(null);
         }
 
         @Override
@@ -51,13 +59,16 @@ public class Window extends JFrame {
         @Override
         public void mouseReleased(MouseEvent e) {
             btn1.setBackground(Color.GREEN);
+            btn2.setBackground(Color.GREEN);
         }
 
         @Override
         public void mouseEntered(MouseEvent e) {
             btn1.setBackground(Color.RED);
+            btn2.setBackground(Color.RED);
             Random random = new Random();
             btn1.setLocation(random.nextInt(width-75), random.nextInt(height-15));
+            btn2.setLocation(random.nextInt(width-75), random.nextInt(height-15));
         }
 
         @Override
